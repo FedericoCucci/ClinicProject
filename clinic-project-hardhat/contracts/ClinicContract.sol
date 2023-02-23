@@ -13,9 +13,10 @@ struct ClinicExam{
     string report;
     uint256 date;
     bool isFile;
+    bool isConfirmed;
 }
 
-event ClinicExamAdded(address doctor,address patient, string examType, string report, uint256 date, bool isFile);
+event ClinicExamAdded(address doctor,address patient, string examType, string report, uint256 date, bool isFile, bool isConfirmed);
 event ClinicExamConfirmed(string message, ClinicExam e);
 
 mapping (uint => ClinicExam) private mapExam;
@@ -52,10 +53,10 @@ function addClinicExam(address patient, string memory examType, string memory re
         require(existDoctor(msg.sender),"You're not a doctor!");
         uint idExam=idCount;
         uint256 date=block.timestamp;
-        mapExam[idExam]=ClinicExam(msg.sender,patient,examType,report,date,isFile);
+        mapExam[idExam]=ClinicExam(msg.sender,patient,examType,report,date,isFile,false);
         idCount+=1;
         mapConfirmExam[idExam][msg.sender] = true;
-        emit ClinicExamAdded(msg.sender, patient, examType, report, date, isFile);
+        emit ClinicExamAdded(msg.sender, patient, examType, report, date, isFile,false);
         return idExam;
     }
 
@@ -64,10 +65,11 @@ function addClinicExam(address patient, string memory examType, string memory re
 function confirmClinicExam(uint256 idExam) public{
     require(mapExam[idExam].patient==msg.sender,"You're not a patient");
     mapConfirmExam[idExam][msg.sender] = true;
+    mapExam[idExam].isConfirmed=true;
     emit ClinicExamConfirmed("Patient and doctor both confirmed exam",mapExam[idExam]);
 }
 
-function getClinicExamsByPatient(address patient) public view returns(ClinicExam[] memory){
+function getClinicExamsByPatient(address patient) public view returns(ClinicExam[] memory, bool[] memory, bool[] memory){
     uint256 count=0;
     for(uint256 i=0;i<idCount;i++){
         if(mapExam[i].patient==patient){
@@ -75,15 +77,19 @@ function getClinicExamsByPatient(address patient) public view returns(ClinicExam
         }
     }
     ClinicExam [] memory exams=new ClinicExam[](count);
+    bool[] memory isFileList= new bool[](count);
+    bool[] memory isConfirmedList= new bool[](count);
     uint256 j=0;
     for(uint256 i=0;i<idCount;i++){
         if(mapExam[i].patient==patient){
             exams[j]=mapExam[i];
+            isFileList[j]=mapExam[i].isFile;
+            isConfirmedList[j]=mapExam[i].isConfirmed;
             j++;
         }
     }
     
-    return exams;
+    return (exams,isFileList,isConfirmedList);
    
 }
 
@@ -94,5 +100,7 @@ function getClinicExamsByPatient(address patient) public view returns(ClinicExam
 function isConfirmed(uint id,address addr)public view returns(bool){
     return mapConfirmExam[id][addr];
 }
+
+
 
 }

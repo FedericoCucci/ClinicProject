@@ -6,6 +6,7 @@ console.log("Deploying contract...")
 const contract= await contractFactory.deploy()
 await contract.deployed()
 console.log("Deployed contract to "+contract.address)
+
 }
 
 
