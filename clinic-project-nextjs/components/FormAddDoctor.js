@@ -12,7 +12,7 @@ export default function FormAddDoctor(){
 
     const chainId = parseInt(chainIdHex)
    const address= chainId in contractAddress ? contractAddress[chainId][0] : null
-    const { error,runContractFunction: addDoctor, isFetching, isLoading } =
+    const { runContractFunction: addDoctor, isFetching, isLoading } =
     useWeb3Contract();
 
     const dispatch = useNotification()
@@ -32,7 +32,7 @@ export default function FormAddDoctor(){
     const handleError = async (tx) => {
         dispatch({
             type: "error",
-            message: "Qualcosa è andato storto!",
+            message: tx,
             title: "Errore",
             position: "topR",
             
@@ -40,7 +40,7 @@ export default function FormAddDoctor(){
     }
 
     return(<div>
-<div className="row d-flex justify-content-center">
+<div className="row d-flex justify-content-center my-5 text-lg">
   <div className="col-lg-8  mb-sm-0">
 <div className="card text-center">
   <div className="card-header">
@@ -58,6 +58,9 @@ export default function FormAddDoctor(){
     <button type="button" className="btn btn-primary mb-3"
     onClick={async ()=>{
         let indirizzo=document.getElementById("indirizzo").value;
+        if(indirizzo==""){
+          handleError("Campo vuoto!")
+        }else{
         const options = {
             abi: abi,
             contractAddress: address,
@@ -67,17 +70,17 @@ export default function FormAddDoctor(){
             },
           };
         await addDoctor({ params: options,
-        onSuccess:(success)=>handleSuccess(),
-        onError:(error)=>handleError(error)
+        onSuccess:()=>handleSuccess(),
+        onError:()=>handleError("Indirizzo sbagliato o già inserito")
         })
     
-    }}
-    disabled={isLoading || isFetching}
+    }}}
+    disabled={isLoading || isFetching ||!isWeb3Enabled}
     >
         {isLoading || isFetching ? (
                             <div className="animate-spin spinner-border h-8 w-8 border-b-2 rounded-full"></div>
                         ) : (
-                            <div><i className="bi bi-person-fill-add"></i> Aggiungi</div>
+                            <div className="text-lg"><i className="bi bi-person-fill-add mr-2"></i> Aggiungi</div>
                         )}
         
         </button>

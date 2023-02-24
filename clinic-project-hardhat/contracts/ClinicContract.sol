@@ -29,13 +29,18 @@ function addDoctor(address doctor) public {
 }
 
 function removeDoctor(address doctor) public{
-    
+    uint256 index=0;
     for(uint i=0;i<listDoctors.length;i++){
         if(listDoctors[i]==doctor){
-            delete listDoctors[i];
-        
+            index=i;
+            for(uint j = index; j < listDoctors.length-1; j++){
+            listDoctors[j] = listDoctors[j+1];      
         }
+        listDoctors.pop();
+        }
+        
     
+
 
 }
 }
@@ -97,7 +102,7 @@ function isConfirmed(uint id,address addr)public view returns(bool){
     return mapConfirmExam[id][addr];
 }
 
-function getListDoctor() public view returns(address[] memory){
+function getListDoctors() public view returns(address[] memory){
     return listDoctors;
 }
 

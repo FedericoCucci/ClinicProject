@@ -35,39 +35,39 @@ export default function Header(){
 
     return(<div>
         {account?(
-            <nav className="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+            <nav className="navbar bg-dark navbar-expand-lg bg-body-tertiary text-xl" data-bs-theme="dark">
   <div className="container-fluid ">
-    <h1 className="navbar-brand text-white " > <i className="bi bi-h-square"></i> Clinic Project</h1>
+    <h1 className="navbar-brand text-white " > <i className="bi bi-h-square mx-2"></i> Clinic Project</h1>
       <ul className=" navbar-nav d-flex justify-content-md-evenly ">
-        <li className="nav-item me-2 ms-2">
-          <h4><a className={currentRoute==="/admin"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/admin">Admin</a></h4>
+        <li className="nav-item mx-5">
+          <div><a className={currentRoute==="/admin"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/admin">Admin</a></div>
         </li>
-        <li className="nav-item me-2 ms-2">
-          <h4><a className={currentRoute==="/"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/">Dottore</a></h4>
+        <li className="nav-item mx-5">
+          <div><a className={currentRoute==="/"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/">Dottore</a></div>
         </li>
-        <li className="nav-item me-2 ms-2">
-        <h4><a className={currentRoute==="/patient"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/patient">Paziente</a></h4>
+        <li className="nav-item mx-5 ">
+        <div><a className={currentRoute==="/patient"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/patient">Paziente</a></div>
         </li>
       </ul>
        
-       <div className="text-white h5">Indirizzo: {account}</div>
+       <div className="text-white">Indirizzo: {account}</div>
       
 
   </div>
 </nav>
         ):(
-            <nav className="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+            <nav className="navbar bg-dark navbar-expand-lg bg-body-tertiary text-xl" data-bs-theme="dark">
   <div className="container-fluid ">
-    <h1 className="navbar-brand text-white " ><i className="bi bi-h-square"></i> Clinic Project</h1>
+    <h1 className="navbar-brand text-white " ><i className="bi bi-h-square mx-2"></i> Clinic Project</h1>
       <ul className=" navbar-nav d-flex justify-content-md-evenly ">
-        <li className="nav-item me-2 ms-2">
-          <h4><a className={currentRoute==="/admin"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/admin">Admin</a></h4>
+        <li className="nav-item mx-5">
+          <div><a className={currentRoute==="/admin"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/admin">Admin</a></div>
         </li>
-        <li className="nav-item me-2 ms-2">
-          <h4><a className={currentRoute==="/"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/">Dottore</a></h4>
+        <li className="nav-item mx-5">
+          <div><a className={currentRoute==="/"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/">Dottore</a></div>
         </li>
-        <li className="nav-item me-2 ms-2">
-        <h4><a className={currentRoute==="/patient"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/patient">Paziente</a></h4>
+        <li className="nav-item mx-5">
+        <div><a className={currentRoute==="/patient"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/patient">Paziente</a></div>
         </li>
       </ul>
        
