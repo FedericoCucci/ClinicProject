@@ -37,7 +37,7 @@ export default function Header(){
         {account?(
             <nav className="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
   <div className="container-fluid ">
-    <h1 className="navbar-brand text-white " href="#">Clinic Project</h1>
+    <h1 className="navbar-brand text-white " > <i className="bi bi-h-square"></i> Clinic Project</h1>
       <ul className=" navbar-nav d-flex justify-content-md-evenly ">
         <li className="nav-item me-2 ms-2">
           <h4><a className={currentRoute==="/admin"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/admin">Admin</a></h4>
@@ -58,7 +58,7 @@ export default function Header(){
         ):(
             <nav className="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
   <div className="container-fluid ">
-    <h1 className="navbar-brand text-white " href="#">Clinic Project</h1>
+    <h1 className="navbar-brand text-white " ><i className="bi bi-h-square"></i> Clinic Project</h1>
       <ul className=" navbar-nav d-flex justify-content-md-evenly ">
         <li className="nav-item me-2 ms-2">
           <h4><a className={currentRoute==="/admin"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/admin">Admin</a></h4>
