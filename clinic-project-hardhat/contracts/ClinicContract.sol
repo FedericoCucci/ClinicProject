@@ -4,7 +4,7 @@ pragma solidity ^0.8.7;
 contract ClinicContract{
 
 
-address[] public listDoctors;
+address[] private listDoctors;
 
 struct ClinicExam{
     address doctor;
@@ -25,6 +25,7 @@ mapping (uint => mapping (address => bool)) private mapConfirmExam;
 uint private idCount;
 
 function addDoctor(address doctor) public {
+    require(!existDoctor(doctor),"Doctor already exists!");
     listDoctors.push(doctor);
 }
 
@@ -94,13 +95,12 @@ function getClinicExamsByPatient(address patient) public view returns(ClinicExam
 }
 
 
-
-
-
 function isConfirmed(uint id,address addr)public view returns(bool){
     return mapConfirmExam[id][addr];
 }
 
-
+function getListDoctor() public view returns(address[] memory){
+    return listDoctors;
+}
 
 }
