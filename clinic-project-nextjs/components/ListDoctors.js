@@ -75,15 +75,15 @@ async function updateUIValues() {
   <div className="card-body">
   <ul className="list-group ">
     {listDoctors.map((doctor)=>(
-        <li className="list-group-item" key={doctor}>{doctor} <button className="btn btn-danger mx-2" address={doctor}
+        <li className="list-group-item" key={doctor}>{doctor} <button className="btn btn-danger mx-2" addressDoctor={doctor}
         onClick={async(e)=>{
-            const indirizzo=e.currentTarget.getAttribute("address")
+            const addressDoctor=e.currentTarget.getAttribute("addressDoctor")
             const options = {
                 abi: abi,
                 contractAddress: address,
                 functionName: "removeDoctor",
                 params: {
-                  doctor:indirizzo,
+                  doctor:addressDoctor,
                 },
               };
             await removeDoctor({ params: options,

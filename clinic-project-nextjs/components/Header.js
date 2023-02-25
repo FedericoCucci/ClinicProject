@@ -38,7 +38,7 @@ export default function Header(){
             <nav className="navbar bg-dark navbar-expand-lg bg-body-tertiary text-xl" data-bs-theme="dark">
   <div className="container-fluid ">
     <h1 className="navbar-brand text-white " > <i className="bi bi-h-square mx-2"></i> Clinic Project</h1>
-      <ul className=" navbar-nav d-flex justify-content-md-evenly ">
+      <ul className=" navbar-nav">
         <li className="nav-item mx-5">
           <div><a className={currentRoute==="/admin"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/admin">Admin</a></div>
         </li>
@@ -59,7 +59,7 @@ export default function Header(){
             <nav className="navbar bg-dark navbar-expand-lg bg-body-tertiary text-xl" data-bs-theme="dark">
   <div className="container-fluid ">
     <h1 className="navbar-brand text-white " ><i className="bi bi-h-square mx-2"></i> Clinic Project</h1>
-      <ul className=" navbar-nav d-flex justify-content-md-evenly ">
+      <ul className=" navbar-nav ">
         <li className="nav-item mx-5">
           <div><a className={currentRoute==="/admin"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/admin">Admin</a></div>
         </li>

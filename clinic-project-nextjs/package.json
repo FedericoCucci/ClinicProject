@@ -15,6 +15,7 @@
     "bootstrap-icons": "^1.10.3",
     "eslint": "8.34.0",
     "eslint-config-next": "13.2.0",
+    "ipfs-http-client": "^60.0.0",
     "magic-sdk": "^13.4.0",
     "moralis-v1": "^1.12.0",
     "next": "13.2.0",
