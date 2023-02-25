@@ -1,4 +1,5 @@
 import Header from '@/components/Header'
+import ListClinicExams from '@/components/ListClinicExams'
 
 
 
@@ -6,7 +7,7 @@ export default function Patient() {
   return (
     <div>
     <Header></Header>
-    <h1>Paziente</h1>
+    <ListClinicExams></ListClinicExams>
     </div>
   )
 }

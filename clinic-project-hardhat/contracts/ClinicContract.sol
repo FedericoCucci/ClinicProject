@@ -34,15 +34,15 @@ function removeDoctor(address doctor) public{
         if(listDoctors[i]==doctor){
             index=i;
             for(uint j = index; j < listDoctors.length-1; j++){
-            listDoctors[j] = listDoctors[j+1];      
-        }
-        listDoctors.pop();
+                listDoctors[j] = listDoctors[j+1];      
+            }
+            listDoctors.pop();
         }
         
     
 
 
-}
+    }
 }
 
 function existDoctor(address doctor) private view returns(bool){
@@ -63,7 +63,7 @@ function addClinicExam(address patient, string memory examType, string memory re
         mapConfirmExam[idExam][msg.sender] = true;
         emit ClinicExamAdded(msg.sender, patient, examType, report, date, isFile);
         return idExam;
-    }
+}
 
 
 
