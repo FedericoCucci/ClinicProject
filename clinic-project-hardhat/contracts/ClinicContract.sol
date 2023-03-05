@@ -45,7 +45,7 @@ function removeDoctor(address doctor) public{
     }
 }
 
-function existDoctor(address doctor) private view returns(bool){
+function existDoctor(address doctor) public view returns(bool){
     for(uint i=0;i<listDoctors.length;i++){
         if(listDoctors[i]==doctor){
             return true;

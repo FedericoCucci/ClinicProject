@@ -43,7 +43,7 @@ export default function FormAddDoctor(){
           <div className="col-lg-8  mb-sm-0">
             <div className="card text-center">
               <div className="card-header">
-                Inserimento Dottore
+               <b> Inserimento Dottore</b>
               </div>
               <div className="card-body">
                 <div className="row g-3">

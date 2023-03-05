@@ -67,7 +67,7 @@ export default function FormAddClinicExams(){
             <div className="col-lg-8  mb-sm-0">
                 <div className="card text-center">
                     <div className="card-header">
-                        Inserimento Esame Clinico
+                       <b> Inserimento Esame Clinico</b>
                     </div>
                     <div className="card-body">
                         <div className="row g-3 d-flex justify-content-center my-2">

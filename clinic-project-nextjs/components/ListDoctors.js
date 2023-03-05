@@ -71,7 +71,7 @@ export default function ListDoctors(){
             <div className="col-lg-8  mb-sm-0">
                 <div className="card text-center">
                     <div className="card-header">
-                        Lista Dottori
+                       <b> Lista Dottori</b>
                     </div>
                     <div className="card-body">
                         <ul className="list-group ">

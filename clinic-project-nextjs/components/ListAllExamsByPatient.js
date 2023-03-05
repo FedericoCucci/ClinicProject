@@ -8,7 +8,9 @@ import { ethers } from "ethers"
 
 export default function ListAllExamsByPatient(){
     
-    const { isWeb3Enabled} =useMoralis()
+    const { isWeb3Enabled,account,chainId: chainIdHex} =useMoralis()
+    const chainId = parseInt(chainIdHex)
+    const address= chainId in contractAddress ? contractAddress[chainId][0] : null
     const addr=contracts_file["address"];
 
     const dispatch = useNotification()
@@ -35,6 +37,8 @@ export default function ListAllExamsByPatient(){
             
         })
     }
+    const { runContractFunction: existDoctor, isFetching, isLoading } =
+        useWeb3Contract();
 
     function getDate(x) {
         const myDate = new Date(x * 1000);
@@ -53,7 +57,7 @@ export default function ListAllExamsByPatient(){
           <div className="col-lg-8  mb-sm-0">
             <div className="card text-center">
               <div className="card-header">
-                Storia Paziente
+                <b>Storia Paziente</b>
               </div>
               <div className="card-body">
                 <div className="row g-3">
@@ -66,7 +70,17 @@ export default function ListAllExamsByPatient(){
                   <div className="col-3">
                     <button type="button" className="btn btn-primary mb-3"
                     onClick={async()=>{
-                        
+                      const options = {
+                        abi: abi,
+                        contractAddress: address,
+                        functionName: "existDoctor",
+                        params: {
+                            doctor:account,
+                        },
+                    };
+
+                    let isDoctor=await existDoctor({params:options})
+                       if(isDoctor){
                         let list=[]
                         let addressPatient=document.getElementById("addresspatient").value;
                         if(addressPatient==""){
@@ -104,20 +118,26 @@ export default function ListAllExamsByPatient(){
                                 
                             }
                             }
-                            if(list.length!=0){
-                            document.getElementById("addresspatient").value=""
-                            setListExams(list)
-                        }else{
-                            document.getElementById("addresspatient").value=""
-                            handleInfo("Nessun Esame")
-                            setListExams([]);
-                           
                             
-                        }
 
                         }
                         }
+
+                        if(list.length!=0){
+                          document.getElementById("addresspatient").value=""
+                          setListExams(list)
+                      }else{
+                          document.getElementById("addresspatient").value=""
+                          handleInfo("Nessun Esame")
+                          setListExams([]);
+                         
+                          
+                      }
+
                         }
+                       }else{
+                        handleError("Non sei un dottore")
+                       }
                           }
                     }
 
