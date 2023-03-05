@@ -47,7 +47,10 @@ export default function Header(){
                   <div><a className={currentRoute==="/"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/">Dottore</a></div>
                 </li>
                 <li className="nav-item mx-5 ">
-                  <div><a className={currentRoute==="/patient"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/patient">Paziente</a></div>
+                  <div><a className={currentRoute==="/exams"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/exams">Esami</a></div>
+                </li>
+                <li className="nav-item mx-5 ">
+                  <div><a className={currentRoute==="/patient"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/patient">Storia Paziente</a></div>
                 </li>
               </ul>
        
@@ -68,7 +71,10 @@ export default function Header(){
                   <div><a className={currentRoute==="/"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/">Dottore</a></div>
                 </li>
                 <li className="nav-item mx-5">
-                  <div><a className={currentRoute==="/patient"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/patient">Paziente</a></div>
+                  <div><a className={currentRoute==="/exams"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/exams">Esami</a></div>
+                </li>
+                <li className="nav-item mx-5 ">
+                  <div><a className={currentRoute==="/patient"?("nav-link text-white active"):("nav-link text-white")} aria-current="page" href="/patient">Storia Paziente</a></div>
                 </li>
               </ul>
        

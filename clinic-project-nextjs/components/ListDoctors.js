@@ -76,9 +76,9 @@ export default function ListDoctors(){
                     <div className="card-body">
                         <ul className="list-group ">
                             {listDoctors.map((doctor)=>(
-                                <li className="list-group-item" key={doctor}>{doctor} <button className="btn btn-danger mx-2" addressDoctor={doctor}
+                                <li className="list-group-item" key={doctor}>{doctor} <button className="btn btn-danger mx-2" addressdoctor={doctor}
                                     onClick={async(e)=>{
-                                        const addressDoctor=e.currentTarget.getAttribute("addressDoctor")
+                                        const addressDoctor=e.currentTarget.getAttribute("addressdoctor")
                                         const options = {
                                             abi: abi,
                                             contractAddress: address,

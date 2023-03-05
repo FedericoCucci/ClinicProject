@@ -6,6 +6,7 @@ const { network } = require("hardhat")
 
 const CONTRACT_ADDRESS_FILE=process.env.CONTRACT_ADDRESS_FILE
 const ABI_FILE=process.env.ABI_FILE
+const CONTRACTS_FILE= process.env.CONTRACTS_FILE
 
 async function main(){
 const contractFactory= await ethers.getContractFactory("ClinicContract")
@@ -13,6 +14,12 @@ console.log("Deploying contract...")
 const contract= await contractFactory.deploy()
 await contract.deployed()
 console.log("Deployed contract to "+contract.address)
+let addr = JSON.parse(fs.readFileSync(CONTRACTS_FILE, "utf8"))
+if (!addr["address"].includes(contract.address)) {
+  addr["address"].push(contract.address)
+} else {
+addr["address"] = [contract.address]}
+fs.writeFileSync(CONTRACTS_FILE, JSON.stringify(addr))
 if(process.env.UPDATE_FRONT_END){
   console.log("Updating front end")
   console.log("Write ABI")
@@ -22,6 +29,7 @@ if(process.env.UPDATE_FRONT_END){
   currentAddress[chainId] = [contract.address]
   console.log("Write Contract Address")
   fs.writeFileSync(CONTRACT_ADDRESS_FILE, JSON.stringify(currentAddress))
+  
 }
 
 }

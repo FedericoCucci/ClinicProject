@@ -89,7 +89,7 @@ export default function ListClinicExams(){
                             <div className="col-lg-8  mb-sm-0">
                                 <div className="card text-center">
                                     <div className="card-header">
-                                        {exam.examType}
+                                       <b> {exam.examType}</b>
                                     </div>
                                     <div className="card-body">
                                         <div>Dottore: {exam.doctor}</div>
@@ -103,9 +103,9 @@ export default function ListClinicExams(){
                                         {listConfirm[index]?(
                                             <h4 className="text-green-600 italic">Esame firmato da dottore e paziente</h4>
                                         ):(
-                                            <button className="btn btn-primary mt-2" idExam={listID[index].toString()}
+                                            <button className="btn btn-primary mt-2" idexam={listID[index].toString()}
                                                 onClick={async(e)=>{
-                                                    const idExam=e.currentTarget.getAttribute("idExam")
+                                                    const idExam=e.currentTarget.getAttribute("idexam")
                                                     const options = {
                                                         abi: abi,
                                                         contractAddress: address,

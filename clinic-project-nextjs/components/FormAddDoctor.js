@@ -17,7 +17,7 @@ export default function FormAddDoctor(){
 
 
     const handleSuccess = async (tx) => {
-        document.getElementById("addressDoctor").value=""
+        document.getElementById("addressdoctor").value=""
         dispatch({
             type: "success",
             message: "Dottore inserito correttamente!",
@@ -51,12 +51,12 @@ export default function FormAddDoctor(){
                     <label >Indirizzo</label>
                   </div>
                   <div className="col-7">
-                    <input type="text"  className="form-control" id="addressDoctor" placeholder="0x0000000000000000000000000000000000000000"/>
+                    <input type="text"  className="form-control" id="addressdoctor" placeholder="0x0000000000000000000000000000000000000000"/>
                   </div>
                   <div className="col-3">
                     <button type="button" className="btn btn-primary mb-3"
                       onClick={async ()=>{
-                        let addressDoctor=document.getElementById("addressDoctor").value;
+                        let addressDoctor=document.getElementById("addressdoctor").value;
                           if(addressDoctor==""){
                             handleError("Campo vuoto!")
                           }else{

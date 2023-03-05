@@ -69,3 +69,7 @@
   .slider.round:before {
     border-radius: 50%;
   }
+
+  .nav-link:hover{
+    border-bottom:solid 5px white;
+  }
